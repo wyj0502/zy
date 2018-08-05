@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/flexible.js"></script>
+    <script src="./js/index.js"></script>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="box"></div>
+    </div>
+    <script>
+        var box = document.querySelector(".box");
+        box.onclick = function() {
+            var xml = new XMLHttpRequest();
+            xml.onload = function(res) {
+                if (res.target.status === 200) {
+                    var data = JSON.parse(res.target.response);
+                    console.log(data)
+                }
+            }
+            xml.open("get", "/api/indexList", true);
+            xml.send();
+        }
+    </script>
+</body>
+
+</html>
